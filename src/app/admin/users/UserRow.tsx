@@ -17,9 +17,9 @@ export function UserRow({ user }: { user: Profile }) {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <tr className="border-t border-line">
-      <td className="px-4 py-3">{user.full_name ?? "—"}</td>
-      <td className="px-4 py-3 text-ink-2">{user.phone ?? "—"}</td>
+    <tr className="border-t border-[#e0e3e6]">
+      <td className="px-4 py-3 text-[#181c1e]">{user.full_name ?? "—"}</td>
+      <td className="px-4 py-3 text-[#43474d]">{user.phone ?? "—"}</td>
       <td className="px-4 py-3">
         <select
           defaultValue={user.role}
@@ -27,7 +27,7 @@ export function UserRow({ user }: { user: Profile }) {
           onChange={(e) =>
             startTransition(() => updateUserRole(user.id, e.target.value as UserRole))
           }
-          className="rounded-lg border border-line bg-bg-2 px-2 py-1 text-xs disabled:opacity-50"
+          className="rounded-md border border-[#c4c6ce] bg-white px-2 py-1 text-xs text-[#181c1e] disabled:opacity-50"
         >
           {roles.map((r) => (
             <option key={r} value={r}>
@@ -38,8 +38,10 @@ export function UserRow({ user }: { user: Profile }) {
       </td>
       <td className="px-4 py-3">
         <span
-          className={`rounded-full px-2 py-1 text-xs ${
-            user.status === "active" ? "bg-success/15 text-success" : "bg-danger/15 text-danger"
+          className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${
+            user.status === "active"
+              ? "bg-[#e6faf3] text-[#007146]"
+              : "bg-[#ffdad6] text-[#93000a]"
           }`}
         >
           {user.status === "active" ? "Faol" : "Bloklangan"}
@@ -54,7 +56,7 @@ export function UserRow({ user }: { user: Profile }) {
               toggleUserStatus(user.id, user.status === "active" ? "blocked" : "active")
             )
           }
-          className="text-xs font-medium text-brand hover:underline disabled:opacity-50"
+          className="text-xs font-semibold text-[#0a2540] hover:underline disabled:opacity-50"
         >
           {user.status === "active" ? "Bloklash" : "Faollashtirish"}
         </button>

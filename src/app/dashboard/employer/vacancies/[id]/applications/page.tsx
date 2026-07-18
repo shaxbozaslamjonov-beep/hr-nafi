@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { ApplicationRow } from "@/components/hh/ApplicationRow";
+import { ApplicationKanban } from "@/components/hh/ApplicationKanban";
 
 export default async function VacancyApplicationsPage({
   params,
@@ -43,37 +43,15 @@ export default async function VacancyApplicationsPage({
   return (
     <main className="container-page py-10">
       <h1 className="text-2xl font-bold">{vacancy.title}</h1>
-      <p className="mt-1 text-sm text-ink-2">Ushbu vakansiyaga kelgan arizalar</p>
+      <p className="mt-1 text-sm text-ink-2">Talent Pipeline — nomzodlarni bosqichma-bosqich boshqaring</p>
 
-      <div className="mt-6 overflow-x-auto rounded-xl border border-line">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-card text-ink-2">
-            <tr>
-              <th className="px-4 py-3 font-medium">Nomzod</th>
-              <th className="px-4 py-3 font-medium">Rezyume</th>
-              <th className="px-4 py-3 font-medium">Xat</th>
-              <th className="px-4 py-3 font-medium">Holat</th>
-            </tr>
-          </thead>
-          <tbody>
-            {(applications ?? []).map((a) => (
-              <ApplicationRow
-                key={a.id}
-                application={a}
-                resume={resumeMap.get(a.resume_id)}
-                applicant={applicantMap.get(a.user_id)}
-                vacancySkills={vacancy.skills}
-              />
-            ))}
-            {(!applications || applications.length === 0) && (
-              <tr>
-                <td colSpan={4} className="px-4 py-8 text-center text-ink-3">
-                  Hali ariza tushmagan.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+      <div className="mt-6">
+        <ApplicationKanban
+          applications={applications ?? []}
+          resumeMap={resumeMap}
+          applicantMap={applicantMap}
+          vacancySkills={vacancy.skills}
+        />
       </div>
     </main>
   );

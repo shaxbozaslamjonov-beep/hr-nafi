@@ -17,8 +17,12 @@ export default async function AdminUsersPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">Foydalanuvchilar</h1>
-      <p className="mt-1 text-sm text-ink-2">Ro&apos;yxatdan o&apos;tgan barcha foydalanuvchilar bazasi</p>
+      <h1 className="text-[28px] font-semibold tracking-tight text-[#181c1e]">
+        Foydalanuvchilar
+      </h1>
+      <p className="mt-1 text-sm text-[#43474d]">
+        Ro&apos;yxatdan o&apos;tgan barcha foydalanuvchilar bazasi
+      </p>
 
       <form className="mt-4">
         <input
@@ -26,19 +30,19 @@ export default async function AdminUsersPage({
           name="q"
           defaultValue={q}
           placeholder="Ism yoki telefon bo'yicha qidirish..."
-          className="w-full max-w-xs rounded-lg border border-line bg-bg-2 px-3 py-2 text-sm focus:border-brand focus:outline-none"
+          className="w-full max-w-xs rounded-lg border border-[#c4c6ce] bg-white px-3 py-2 text-sm text-[#181c1e] focus:border-[#0a2540] focus:outline-none"
         />
       </form>
 
-      <div className="mt-6 overflow-x-auto rounded-xl border border-line">
+      <div className="mt-6 overflow-hidden overflow-x-auto rounded-lg border border-[#e0e3e6] bg-white shadow-[0_4px_20px_rgba(10,37,64,0.06)]">
         <table className="w-full text-left text-sm">
-          <thead className="bg-card text-ink-2">
+          <thead className="bg-[#f1f4f7] text-[10px] font-semibold uppercase tracking-wide text-[#43474d]">
             <tr>
-              <th className="px-4 py-3 font-medium">Ism</th>
-              <th className="px-4 py-3 font-medium">Telefon</th>
-              <th className="px-4 py-3 font-medium">Rol</th>
-              <th className="px-4 py-3 font-medium">Holat</th>
-              <th className="px-4 py-3 font-medium">Amallar</th>
+              <th className="px-4 py-3">Ism</th>
+              <th className="px-4 py-3">Telefon</th>
+              <th className="px-4 py-3">Rol</th>
+              <th className="px-4 py-3">Holat</th>
+              <th className="px-4 py-3">Amallar</th>
             </tr>
           </thead>
           <tbody>
@@ -47,7 +51,7 @@ export default async function AdminUsersPage({
             ))}
             {(!users || users.length === 0) && (
               <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-ink-3">
+                <td colSpan={5} className="px-4 py-8 text-center text-[#74777e]">
                   Foydalanuvchilar topilmadi.
                 </td>
               </tr>
