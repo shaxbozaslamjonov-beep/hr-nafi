@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
+/*
+  EducaJobs / Nafi HH — Dizayn tizimi
+  Brend: indigo (asosiy), cyan (ikkilamchi), oltin (urg'u). Qorong'i mavzu asosiy.
+*/
+
+@theme {
+  /* Brend ranglari */
+  --color-brand: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-accent: #06b6d4;
+  --color-gold: #ffd700;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* Yuza (surface) ranglari — qorong'i mavzu */
+  --color-bg: #0a0e17;
+  --color-bg-2: #111827;
+  --color-card: #1f293d;
+  --color-card-2: #28354e;
+  --color-line: #2e3c54;
+
+  --color-ink: #f8fafc;
+  --color-ink-2: #94a3b8;
+  --color-ink-3: #64748b;
+
+  /* Shriftlar */
+  --font-heading: var(--font-outfit), "Inter", sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  /* Radiuslar */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--color-line);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Yordamchi klasslar */
+.container-page {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+}
+
+.brand-gradient {
+  background-image: linear-gradient(135deg, var(--color-brand) 0%, var(--color-accent) 100%);
+}
+
+.text-gradient {
+  background-image: linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Skrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-card-2); }
